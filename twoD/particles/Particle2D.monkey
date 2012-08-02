@@ -131,6 +131,7 @@
 		'/**
 		 '* A transformation matrix for the position, scale and rotation of the particle.
 		 '*/
+		 ' TO-DO matrix as array(6)
 		'Method get matrixTransform:Matrix()
 		'	Local cos:Float = scale * Math.cos( rotation )
 		'	Local sin:Float = scale * Math.sin( rotation )

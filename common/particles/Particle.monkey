@@ -34,7 +34,8 @@ Strict
 
 'Import flash.geom.ColorTransform
 'Import flash.utils.Dictionary	
-Import flintparticlesextern
+Import flintparticles.flintextern
+Import flintparticles.common.particles.ParticleFactory
 
 '/**
  '* The Particle class is a set of public properties shared by all particles.
@@ -48,10 +49,12 @@ Import flintparticlesextern
  '* application. 
  '*/
 Class Particle
+
+Public
 	'/**
 	 '* The 32bit ARGB color of the particle. The initial value is 0xFFFFFFFF (white).
 	 '*/
-	Public color:Int = $FFFFFFFF
+	Field color:Int = $FFFFFFFF
 	
 	'//TO-DO ColorTransform Class
 	'Private	Field _colorTransform:ColorTransform = Null
@@ -60,17 +63,17 @@ Class Particle
 	'/**
 	 '* The scale of the particle ( 1 is normal size ).
 	 '*/
-	Public scale:Float = 1
+	Field scale:Float = 1
 	
 	'/**
 	 '* The mass of the particle ( 1 is the default ).
 	 '*/
-	Public mass:Float = 1
+	Field mass:Float = 1
 	
 	'/**
 	 '* The radius of the particle, for collision approximation
 	 '*/
-	Public collisionRadius:Float = 1
+	Field collisionRadius:Float = 1
 
 	'/**
 	 '* The object used to display the image. In a 2D particle, this is usually
@@ -78,25 +81,25 @@ Class Particle
 	 '* displaying on a billboard or similar, or a 3D object in the form used
 	 '* by the render system.
 	 '*/
-	Public image:Object = Null
+	Field image:Object = Null
 	
 	'/**
 	 '* The lifetime of the particle, in seconds.
 	 '*/
-	Public lifetime:Float = 0
+	Field lifetime:Float = 0
 	'/**
 	 '* The age of the particle, in seconds.
 	 '*/
-	Public age:Float = 0
+	Field age:Float = 0
 	'/**
 	 '* The energy of the particle.
 	 '*/
-	Public energy:Float = 1
+	Field energy:Float = 1
 	
 	'/**
 	 '* Whether the particle is dead And should be removed from the stage.
 	 '*/
-	Public isDead:Bool = False
+	Field isDead:Bool = False
 	
 	'/**
 	 '* The dictionary object enables actions and activities to add additional properties to the particle.
@@ -192,7 +195,7 @@ Class Particle
 	 '* only one of the particles (original Or clone) will be displayed.</p>
 	 '*/
 	Method Clone:Particle( factory:ParticleFactory = Null )
-		Field p:Particle
+		Local p:Particle
 		If( factory ) Then
 			p = factory.CreateParticle()
 

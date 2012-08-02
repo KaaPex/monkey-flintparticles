@@ -1,53 +1,50 @@
- #REM
- '*
- '* FLINT PARTICLE SYSTEM
- '* .....................
- '* 
- '* Author: Richard Lord
- '* Copyright (c) Richard Lord 2008-2011
- '* http://flintparticles.org
- '* Copyright: Monkey port - 2012 Aleksey 'KaaPex' Kazantsev
- '* 
- '* Licence Agreement
- '* 
- '* Permission is hereby granted, free of charge, to any person obtaining a copy
- '* of this software and associated documentation files (the "Software"), to deal
- '* in the Software without restriction, including without limitation the rights
- '* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- '* copies of the Software, and to permit persons to whom the Software is
- '* furnished to do so, subject to the following conditions:
- '* 
- '* The above copyright notice and this permission notice shall be included in
- '* all copies or substantial portions of the Software.
- '* 
- '* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- '* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- '* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- '* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- '* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- '* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- '* THE SOFTWARE.
- '*
- #End
- 
- Strict
+/*
+ * FLINT PARTICLE SYSTEM
+ * .....................
+ * 
+ * Author: Richard Lord
+ * Copyright (c) Richard Lord 2008-2011
+ * http://flintparticles.org
+ * 
+ * 
+ * Licence Agreement
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 
-	Import flintparticles.common.actions.Action
-	Import flintparticles.common.activities.Activity
-	Import flintparticles.common.behaviours.Behaviour
-	Import flintparticles.common.counters.Counter
-	Import flintparticles.common.counters.ZeroCounter
-	'Import org.flintparticles.common.events.EmitterEvent;
-	'Import org.flintparticles.common.events.ParticleEvent;
-	'Import org.flintparticles.common.events.UpdateEvent;
-	Import flintparticles.common.initializers.Initializer
-	Import flintparticles.common.particles.Particle
-	Import flintparticles.common.particles.ParticleFactory
+package org.flintparticles.common.emitters
+{
+	import org.flintparticles.common.actions.Action;
+	import org.flintparticles.common.activities.Activity;
+	import org.flintparticles.common.behaviours.Behaviour;
+	import org.flintparticles.common.counters.Counter;
+	import org.flintparticles.common.counters.ZeroCounter;
+	import org.flintparticles.common.events.EmitterEvent;
+	import org.flintparticles.common.events.ParticleEvent;
+	import org.flintparticles.common.events.UpdateEvent;
+	import org.flintparticles.common.initializers.Initializer;
+	import org.flintparticles.common.particles.Particle;
+	import org.flintparticles.common.particles.ParticleFactory;
 	import org.flintparticles.common.utils.FrameUpdater;
 
 	import flash.events.EventDispatcher;
 
-#REM
 	/**
 	 * Dispatched when a particle dies and is about to be removed from the system.
 	 * As soon as the event has been handled the particle will be removed but at the
@@ -105,43 +102,43 @@
 	 * @eventType org.flintparticles.common.events.EmitterEvent.COUNTER_COMPLETE
 	 */
 	[Event(name="counterComplete", type="org.flintparticles.common.events.EmitterEvent")]
-#End
 
-	'/**
-	 '* The Emitter class is the base class for the Emitter2D and Emitter3D classes.
-	 '* The emitter class contains the common behavioour used by these two concrete
-	 '* classes.
-	 '* 
-	 '* <p>An Emitter manages the creation and ongoing state of particles. It uses 
-	 '* a number of utility classes to customise its behaviour.</p>
-	 '* 
-	 '* <p>An emitter uses Initializers to customise the initial state of particles
-	 '* that it creates; their position, velocity, color etc. These are added to the 
-	 '* emitter using the addInitializer method.</p>
-	 '* 
-	 '* <p>An emitter uses Actions to customise the behaviour of particles that
-	 '* it creates; to apply gravity, drag, fade etc. These are added to the emitter 
-	 '* using the addAction method.</p>
-	 '* 
-	 '* <p>An emitter uses Activities to alter its own behaviour, to move it or rotate
-	 '* it for example.</p>
-	 '* 
-	 '* <p>An emitter uses a Counter to know when and how many particles to emit.</p>
-	 '* 
-	 '* <p>All timings in the emitter are based on actual time passed, 
-	 '* independent of the frame rate of the flash movie.</p>
-	 '* 
-	 '* <p>Most functionality is best added to an emitter using Actions,
-	 '* Initializers, Activities and Counters. This offers greater 
-	 '* flexibility to combine behaviours without needing to subclass 
-	 '* the Emitter classes.</p>
-	 '*/
+	/**
+	 * The Emitter class is the base class for the Emitter2D and Emitter3D classes.
+	 * The emitter class contains the common behavioour used by these two concrete
+	 * classes.
+	 * 
+	 * <p>An Emitter manages the creation and ongoing state of particles. It uses 
+	 * a number of utility classes to customise its behaviour.</p>
+	 * 
+	 * <p>An emitter uses Initializers to customise the initial state of particles
+	 * that it creates; their position, velocity, color etc. These are added to the 
+	 * emitter using the addInitializer method.</p>
+	 * 
+	 * <p>An emitter uses Actions to customise the behaviour of particles that
+	 * it creates; to apply gravity, drag, fade etc. These are added to the emitter 
+	 * using the addAction method.</p>
+	 * 
+	 * <p>An emitter uses Activities to alter its own behaviour, to move it or rotate
+	 * it for example.</p>
+	 * 
+	 * <p>An emitter uses a Counter to know when and how many particles to emit.</p>
+	 * 
+	 * <p>All timings in the emitter are based on actual time passed, 
+	 * independent of the frame rate of the flash movie.</p>
+	 * 
+	 * <p>Most functionality is best added to an emitter using Actions,
+	 * Initializers, Activities and Counters. This offers greater 
+	 * flexibility to combine behaviours without needing to subclass 
+	 * the Emitter classes.</p>
+	 */
 
-	Public Class Emitter
-		'/**
-		 '* @private
-		 '*/
-		Field _particleFactory:ParticleFactory;
+	public class Emitter extends EventDispatcher
+	{
+		/**
+		 * @private
+		 */
+		protected var _particleFactory:ParticleFactory;
 		
 		/**
 		 * @private
@@ -1076,4 +1073,5 @@
 		{
 			return b1.priority - b2.priority;
 		}
-End Class
+	}
+}
