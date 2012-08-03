@@ -36,6 +36,7 @@ Strict
 'Import flash.utils.Dictionary	
 Import flintparticles.flintextern
 Import flintparticles.common.particles.ParticleFactory
+Import flintparticles.twoD.particles.ParticleCreator2D
 
 '/**
  '* The Particle class is a set of public properties shared by all particles.
@@ -194,7 +195,7 @@ Public
 	 '* DisplayObjectRenderer you will need To replace teh image Property with a New image, otherwise
 	 '* only one of the particles (original Or clone) will be displayed.</p>
 	 '*/
-	Method Clone:Particle( factory:ParticleFactory = Null )
+	Method Clone:Particle( factory:ParticleCreator2D = Null )
 		Local p:Particle
 		If( factory ) Then
 			p = factory.CreateParticle()

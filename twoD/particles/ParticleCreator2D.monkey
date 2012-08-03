@@ -29,6 +29,8 @@
  '* THE SOFTWARE.
  '*
  #End
+ Strict
+ 
 Import monkey.list
 Import flintparticles.common.debug.ParticleFactoryStats
 Import flintparticles.common.particles.Particle
@@ -40,15 +42,14 @@ Import flintparticles.common.particles.ParticleFactory
  '* and reuses them when a new particle is needed, rather than creating a whole new particle.
  '*/
 
-Public Class ParticleCreator2D Implements ParticleFactory
+Class ParticleCreator2D Implements ParticleFactory
 
-	Private 
-		Field _particles:List<Particle>
+	Field _particles:List<Particle>
 	
 	'/**
 	 '* The constructor creates a ParticleCreator object.
 	 '*/
-	Public Method ParticleCreator2D()
+	Method New()
 		_particles = New List<Particle>()
 	End Method
 	
@@ -59,7 +60,7 @@ Public Class ParticleCreator2D Implements ParticleFactory
 	 '* 
 	 '* @return a Particle object.
 	 '*/
-	Public Method CreateParticle:Particle()
+	Method CreateParticle:Particle()
 		ParticleFactoryStats.numParticles += 1
 		If ( _particles.Count() <> 0 ) Then
 			Local p:Particle = _particles.LastNode()
@@ -75,7 +76,7 @@ Public Class ParticleCreator2D Implements ParticleFactory
 	 '* 
 	 '* @param particle The particle to return for reuse.
 	 '*/
-	public Method DisposeParticle:void( particle:Particle )
+	Method DisposeParticle:void( particle:Particle )
 		ParticleFactoryStats.numParticles -= 1
 		If( Particle2D(particle) <> Null ) Then
 			particle.initialize()
@@ -86,7 +87,7 @@ Public Class ParticleCreator2D Implements ParticleFactory
 	'/**
 	 '* Empties the particle pool.
 	 '*/
-	Public Method ClearAllParticles:Void()
+	Method ClearAllParticles:Void()
 		_particles = new List<Particle>()
 	End Method
 End Class

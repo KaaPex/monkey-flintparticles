@@ -141,12 +141,12 @@
 		'/**
 		 '* @inheritDoc
 		 '*/
-		Method clone:Particle( factory:ParticleFactory = null )
+		Method Clone:Particle( factory:ParticleFactory = Null )
 			Local p:Particle2D
 			If( factory <> Null )
 				p = (Particle2D)factory.CreateParticle()
 			Else
-				p = new Particle2D()
+				p = New Particle2D()
 			Endif
 			CloneInto( p )
 			p.x = x
@@ -155,7 +155,7 @@
 			p.velY = velY
 			p.rotation = rotation
 			p.angVelocity = angVelocity
-			return p
+			Return p
 		End Method
 		
 	End Method

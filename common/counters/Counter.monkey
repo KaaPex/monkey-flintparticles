@@ -32,7 +32,7 @@
 
 Strict
 
-import org.flintparticles.common.emitters.Emitter	
+Import flintparticles.common.emitters.Emitter	
 
 '/**
  '* The Counter interface must be implemented by all counters.
@@ -56,7 +56,7 @@ Interface Counter
 	 '* @param emitter The emitter.
 	 '* @return The number of particles the emitter should emit when it starts.
 	 '*/
-	Method StartEmitter:int( emitter:Emitter )
+	Method StartEmitter:Int( emitter:Emitter )
 	
 	'/**
 	 '* The updateEmitter method is called every frame after the
@@ -70,7 +70,7 @@ Interface Counter
 	 '* @return The number of particles the emitter should emit
 	 '* at this time.
 	 '*/
-	Method updateEmitter:int( emitter:Emitter, time:Float )
+	Method UpdateEmitter:Int( emitter:Emitter, time:Float )
 
 	'/**
 	 '* Stops the counter instructing the emitter to emit particles

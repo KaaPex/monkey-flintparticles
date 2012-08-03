@@ -77,11 +77,11 @@
 		 '* 
 		 '* default factory to manage the creation, reuse and destruction of particles
 		 '*/
-		'protected static var _creator:ParticleCreator2D = new ParticleCreator2D();
+		Field _creator:ParticleCreator2D = new ParticleCreator2D()
 		
-		/**
-		 * The default particle factory used to manage the creation, reuse and destruction of particles.
-		 */
+		'/**
+		 '* The default particle factory used to manage the creation, reuse and destruction of particles.
+		 '*/
 		public static function get defaultParticleFactory():ParticleFactory
 		{
 			return _creator;

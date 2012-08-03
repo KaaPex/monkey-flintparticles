@@ -38,7 +38,7 @@ Import flintparticles.common.emitters.Emitter
  '* Activity interfaces.
  '*/
 Interface Behaviour
-{
+
 	'/**
 	 '* The priority property is used to order the execution of behaviours.
 	 '* 
