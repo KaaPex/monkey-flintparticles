@@ -32,6 +32,7 @@
  Strict
  
 Import monkey.list
+Import Particle2D
 Import flintparticles.common.debug.ParticleFactoryStats
 Import flintparticles.common.particles.Particle
 Import flintparticles.common.particles.ParticleFactory
@@ -44,8 +45,10 @@ Import flintparticles.common.particles.ParticleFactory
 
 Class ParticleCreator2D Implements ParticleFactory
 
+Private
 	Field _particles:List<Particle>
-	
+
+Public	
 	'/**
 	 '* The constructor creates a ParticleCreator object.
 	 '*/
@@ -62,10 +65,10 @@ Class ParticleCreator2D Implements ParticleFactory
 	 '*/
 	Method CreateParticle:Particle()
 		ParticleFactoryStats.numParticles += 1
-		If ( _particles.Count() <> 0 ) Then
+		If ( Not _particles.IsEmpty() ) Then
 			Local p:Particle = _particles.LastNode()
 			_particles.RemoveLast()
-			Return _particles.pop()
+			Return p
 		Else
 			Return New Particle2D()
 		Endif
@@ -79,7 +82,7 @@ Class ParticleCreator2D Implements ParticleFactory
 	Method DisposeParticle:void( particle:Particle )
 		ParticleFactoryStats.numParticles -= 1
 		If( Particle2D(particle) <> Null ) Then
-			particle.initialize()
+			particle.Initialize()
 			_particles.AddLast( particle )
 		Endif
 	End Method

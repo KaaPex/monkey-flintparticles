@@ -41,7 +41,7 @@ Strict
  '* @see flintparticles.twoD.particles.ParticleCreator2D
  '* @see flintparticles.threeD.particles.ParticleCreator3D
  '*/
-
+Import Particle
 
 Interface ParticleFactory 
 	

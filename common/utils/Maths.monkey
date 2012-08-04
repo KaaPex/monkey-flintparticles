@@ -38,14 +38,15 @@ Import monkey.math
 ' */
 Class Maths 			
 
+Public
 	'/**
 	 '* Converts an angle from radians to degrees
 	 '* 
 	 '* @param radians The angle in radians
 	 '* @return The angle in degrees
 	 '*/
-	Method AsDegrees( radians:Number ):Number
-		return radians * RADTODEG;
+	Method AsDegrees:Float( radians:Float )
+		Return radians * RADTODEG
 	End Method
 	
 	'/**
@@ -54,13 +55,13 @@ Class Maths
 	 '* @param radians The angle in degrees
 	 '* @return The angle in radians
 	 '*/
-	Method AsRadians( degrees:Number ):Number
-		return degrees * DEGTORAD;
+	Method AsRadians:Float( degrees:Float )
+		Return degrees * DEGTORAD
 	End Method
 	
-	Private 
-		Const RADTODEG:Float = 180 / PI;
-		Const DEGTORAD:Float = PI / 180;		
+Private 
+	Const RADTODEG:Float = 180 / PI
+	Const DEGTORAD:Float = PI / 180		
 	
 End Class
 

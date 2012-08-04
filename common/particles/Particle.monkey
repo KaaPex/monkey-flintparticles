@@ -35,8 +35,8 @@ Strict
 'Import flash.geom.ColorTransform
 'Import flash.utils.Dictionary	
 Import flintparticles.flintextern
-Import flintparticles.common.particles.ParticleFactory
-Import flintparticles.twoD.particles.ParticleCreator2D
+Import ParticleFactory
+
 
 '/**
  '* The Particle class is a set of public properties shared by all particles.
@@ -195,22 +195,21 @@ Public
 	 '* DisplayObjectRenderer you will need To replace teh image Property with a New image, otherwise
 	 '* only one of the particles (original Or clone) will be displayed.</p>
 	 '*/
-	Method Clone:Particle( factory:ParticleCreator2D = Null )
+	Method Clone:Particle( factory:ParticleFactory = Null )
 		Local p:Particle
 		If( factory ) Then
 			p = factory.CreateParticle()
-
 		Else
-			p = new Particle()
+			p = New Particle()
 		Endif
-		return CloneInto( p )
+		Return CloneInto( p )
 	End Method
 	
 	Method Revive:Void()
 		lifetime = 0
 		age = 0
 		energy = 1
-		isDead = false
+		isDead = False
 	End Method
 
 End Class

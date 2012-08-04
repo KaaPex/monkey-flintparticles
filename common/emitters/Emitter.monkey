@@ -785,39 +785,36 @@ Public Class Emitter
 			Activity( _activities.Get(i) ).Update( Self, time )
 		Next
 		
-		if ( _particles.length > 0 )
-		{
+		If ( _particles.Length() > 0 ) Then
 			
 			'// update particle state
 			len = _actions.Length()
 			var action:Action
 			var len2:Int = _particles.Length()
 			var j:int
-			if( _processLastFirst )
-			{
-				for( j = 0; j < len; ++j )
+			If( _processLastFirst ) Then
+				For( j = 0; j < len; ++j )
 				{
 					action = _actions[j];
-					for ( i = len2 - 1; i >= 0; --i )
+					For ( i = len2 - 1; i >= 0; --i )
 					{
 						particle = _particles[i];
 						action.update( Self, particle, time );
 					}
 				}
-			}
-			else
+			Else
 			{
-				for( j = 0; j < len; ++j )
+				For( j = 0; j < len; ++j )
 				{
 					action = _actions[j];
-					for ( i = 0; i < len2; ++i )
+					For ( i = 0; i < len2; ++i )
 					{
 						particle = _particles[i];
 						action.update( Self, particle, time );
 					}
 				}
-			}
-			_processLastFirst = !_processLastFirst;
+			Endif
+			_processLastFirst = Not _processLastFirst
 			
 			'// remove dead particles
 			
@@ -830,9 +827,9 @@ Public Class Emitter
 						_particleFactory.DisposeParticle( particle );
 					}
 				}
-		}
+		Endif
 
-		_updating = false;
+		_updating = False
 		
 	End Method
 	
@@ -840,8 +837,8 @@ Public Class Emitter
 	 '* Used to sort the particles as required. In this base class this method 
 	 '* does nothing.
 	 '*/
-	Method SortParticles:Void()
-	End Method
+	'Method SortParticles:Void()
+	'End Method
 	
 	'/**
 	 '* Pauses the emitter.
