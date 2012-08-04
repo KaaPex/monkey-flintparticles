@@ -205,6 +205,6 @@ Public
 	'		{
 	'			Particle2D( _particles[ i ] ).sortID = i;
 	'		}
-		}
+	'	}
 	'End Method
 End Class
